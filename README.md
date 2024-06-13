@@ -107,7 +107,7 @@ The backend should now be running one ` http://localhost:8000 `.
 2. Import the database schema :
 
     ```bash
-    mysql -u your_username -p project-php < path/to/schema.sql
+    mysql -u your_username -p project-php < Project/backend/schema.sql
    ```
 
 3. Update the database connection settings in the `.env` file located in the backend directory:

@@ -8,6 +8,7 @@ import Login from './components/Login/Login'
 import Home from './components/Home/Home'
 import ForgotPassword from './components/Forgotpassword/ForgotPassword'
 import NotFound from './components/Notfound/NotFound'
+import Contact from './components/Contact/Contact'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUP />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
+      <Route path='/contact' element={<Contact />}></Route>
       <Route path='*' element={<NotFound />} />
     </Route>
   )

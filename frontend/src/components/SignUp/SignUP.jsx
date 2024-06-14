@@ -19,40 +19,40 @@ export default function App() {
   useEffect(() => {
     const evaluatePasswordStrength = (password) => {
       let score = 0;
-    
+
       if (password.length >= 8) score += 1;
-      if (password.length >= 12) score += 1; 
-    
+      if (password.length >= 12) score += 1;
+
       if (/[A-Z]/.test(password)) score += 1;
       if (/[a-z]/.test(password)) score += 1;
-    
+
       if (/\d/.test(password)) score += 1;
-      if (/\d.*\d/.test(password)) score += 1; 
-    
+      if (/\d.*\d/.test(password)) score += 1;
+
       const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
       if (specialCharRegex.test(password)) score += 1;
-      if (password.match(specialCharRegex) && password.match(specialCharRegex).length > 1) score += 1; 
-    
+      if (password.match(specialCharRegex) && password.match(specialCharRegex).length > 1) score += 1;
+
       const commonPatterns = [
-        /^(.)\1+$/, 
-        /^(0123456789|9876543210|qwerty|asdfgh|zxcvbn|password)$/i, 
-        /^(123456|654321|abcdef|fedcba)$/i, 
+        /^(.)\1+$/,
+        /^(0123456789|9876543210|qwerty|asdfgh|zxcvbn|password)$/i,
+        /^(123456|654321|abcdef|fedcba)$/i,
       ];
-      
+
       commonPatterns.forEach(pattern => {
         if (pattern.test(password)) score -= 1;
       });
-    
+
       if (/[A-Z]/.test(password) && /[a-z]/.test(password) && /\d/.test(password) && specialCharRegex.test(password)) {
         score += 2;
       }
-    
+
       score = Math.max(score, 0);
-    
+
       return score;
     };
-    
-    
+
+
     setPasswordStrength(evaluatePasswordStrength(password));
   }, [password]);
 
@@ -63,6 +63,9 @@ export default function App() {
     return "bg-green-500";
   };
 
+  const toggleLogin = () => {
+    window.location.href = "/login"
+  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <form
@@ -72,15 +75,17 @@ export default function App() {
         <h2 className="text-2xl font-bold mb-6 text-black dark:text-white text-center">Sign Up</h2>
 
         <div className="mb-4">
+
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
             Enter your name:
           </label>
           <input
+            id="name"
             defaultValue=""
             {...register("name", { required: "Name is required" })}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-black dark:text-white dark:bg-gray-700 focus:ring-blue-500 ${
-              errors.name ? "border-red-500" : "border-gray-300"
-            }`}
+            autoComplete="name"
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 text-black dark:text-white dark:bg-gray-700 focus:ring-blue-500 ${errors.name ? "border-red-500" : "border-gray-300"
+              }`}
           />
           {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
         </div>
@@ -90,6 +95,7 @@ export default function App() {
             Enter your email:
           </label>
           <input
+            id="email"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -97,9 +103,9 @@ export default function App() {
                 message: "Enter a valid email address",
               },
             })}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
+            autoComplete="email"
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${errors.email ? "border-red-500" : "border-gray-300"
+              }`}
           />
           {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
         </div>
@@ -110,6 +116,7 @@ export default function App() {
           </label>
           <div className="relative flex items-center">
             <input
+              id="password"
               type={showPassword ? "text" : "password"}
               {...register("password", {
                 required: "Password is required",
@@ -122,9 +129,9 @@ export default function App() {
                   message: "Password must contain at least one uppercase letter, one lowercase letter, and one number",
                 },
               })}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${
-                errors.password ? "border-red-500" : "border-gray-300"
-              }`}
+              autoComplete="current-password"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${errors.password ? "border-red-500" : "border-gray-300"
+                }`}
             />
             <button
               type="button"
@@ -151,14 +158,15 @@ export default function App() {
           </label>
           <div className="relative flex items-center">
             <input
+              id="cpassword"
               type={showConfirmPassword ? "text" : "password"}
               {...register("cpassword", {
                 required: "Confirm password is required",
                 validate: (value) => value === password || "Passwords do not match",
               })}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${
-                errors.cpassword ? "border-red-500" : "border-gray-300"
-              }`}
+              autoComplete= "disabled"
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none text-black dark:text-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 ${errors.cpassword ? "border-red-500" : "border-gray-300"
+                }`}
             />
             <button
               type="button"
@@ -172,9 +180,21 @@ export default function App() {
         </div>
 
         <input
+          id="submit"
+          name="submit"
           type="submit"
           className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
         />
+        <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">
+          Already Have an account?{" "}
+          <button
+            type="button"
+            className="text-blue-500 hover:underline focus:outline-none"
+            onClick={toggleLogin}
+          >
+            Login here
+          </button>
+        </p>
       </form>
     </div>
   );

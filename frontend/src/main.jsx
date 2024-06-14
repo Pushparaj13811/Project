@@ -9,6 +9,7 @@ import Home from './components/Home/Home'
 import ForgotPassword from './components/Forgotpassword/ForgotPassword'
 import NotFound from './components/Notfound/NotFound'
 import Contact from './components/Contact/Contact'
+import Profile from './components/Profile/Profile'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />}></Route>
       <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
       <Route path='/contact' element={<Contact />}></Route>
+      <Route path='/profile' element={<Profile />}></Route>
       <Route path='*' element={<NotFound />} />
     </Route>
   )

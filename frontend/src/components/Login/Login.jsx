@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { closedEye, openEye } from "@/assets";
+import { Link } from "react-router-dom";
 
 export default function App() {
     const {
@@ -11,13 +12,6 @@ export default function App() {
 
     const onSubmit = (data) => console.log(data);
     const [showPassword, setShowPassword] = useState(false);
-
-    const toggleSignup = () => {
-        window.location.href = "/signup";
-    };
-    const toggleForgotPassword = () => {
-        window.location.href = "/forgotpassword";
-    }
 
     return (
         <>
@@ -87,23 +81,21 @@ export default function App() {
 
                     <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">
                         Don't have an account?{" "}
-                        <button
-                            type="button"
+                        <Link
+                            to="/signup"
                             className="text-blue-500 hover:underline focus:outline-none"
-                            onClick={toggleSignup}
                         >
                             Sign up here
-                        </button>
+                        </Link>
                     </p>
                     <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">
                         Forgot Password?{" "}
-                        <button
-                            type="button"
+                        <Link
+                            to="/forgotpassword"
                             className="text-blue-500 hover:underline focus:outline-none"
-                            onClick={toggleForgotPassword}
                         >
                             Click here
-                        </button>
+                        </Link>
                     </p>
 
                 </form>

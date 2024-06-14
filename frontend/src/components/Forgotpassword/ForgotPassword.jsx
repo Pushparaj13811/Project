@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom';
 
 function ForgotPassword() {
     const {
@@ -10,9 +11,6 @@ function ForgotPassword() {
 
     const onSubmit = (data) => console.log(data);
 
-    const toggleLogin = () => {
-        window.location.href = "/login";
-    }
     return (
         <>
             <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -46,14 +44,13 @@ function ForgotPassword() {
                         className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
                     />
                     <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">
-                        Already Have an account?{" "}
-                        <button
-                            type="button"
+                        Remembered password?{" "}
+                        <Link
+                            to="/login"
                             className="text-blue-500 hover:underline focus:outline-none"
-                            onClick={toggleLogin}
                         >
                             Login here
-                        </button>
+                        </Link>
                     </p>
 
                 </form>

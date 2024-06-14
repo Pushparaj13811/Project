@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { closedEye, openEye } from "@/assets";
+import { Link } from "react-router-dom";
 
 export default function App() {
   const {
@@ -63,9 +64,6 @@ export default function App() {
     return "bg-green-500";
   };
 
-  const toggleLogin = () => {
-    window.location.href = "/login"
-  }
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
       <form
@@ -187,13 +185,12 @@ export default function App() {
         />
         <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">
           Already Have an account?{" "}
-          <button
-            type="button"
+          <Link
+            to="/login"
             className="text-blue-500 hover:underline focus:outline-none"
-            onClick={toggleLogin}
           >
             Login here
-          </button>
+          </Link>
         </p>
       </form>
     </div>

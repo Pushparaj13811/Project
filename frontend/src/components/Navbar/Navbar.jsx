@@ -21,9 +21,11 @@ function Navbar() {
                     <div className="items-center space-x-4">
                         <div className="navbar-logo text-black dark:text-white">
                             <h1 className="text-xl">
-                                <a href="/">
+                                <Link
+                                to = '/'
+                                >
                                     Logo
-                                </a>
+                                </Link>
                             </h1>
                         </div>
                     </div>

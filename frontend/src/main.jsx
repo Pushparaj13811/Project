@@ -10,6 +10,10 @@ import ForgotPassword from './components/Forgotpassword/ForgotPassword'
 import NotFound from './components/Notfound/NotFound'
 import Contact from './components/Contact/Contact'
 import Profile from './components/Profile/Profile'
+import Highlights from './components/Highlights/Highlights'
+import Stories from './components/Stories/Stories'
+import Saved from './components/Saved/Saved'
+import Tagged from './components/Tagged/Tagged'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +23,13 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />}></Route>
       <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
       <Route path='/contact' element={<Contact />}></Route>
-      <Route path='/profile' element={<Profile />}></Route>
+      <Route path='/profile' element={<Profile />}>
+        <Route path='highlights' element={<Highlights />}></Route>
+        <Route path='stories' element={<Stories />}></Route>
+        <Route path='saved' element={< Saved />}></Route>
+        <Route path='tagged' element={<Tagged />}></Route>
+        <Route path='*' element={<NotFound />} />
+      </Route>
       <Route path='*' element={<NotFound />} />
     </Route>
   )

@@ -11,6 +11,7 @@ import lightscroll from "./light-scroll.svg";
 import darkscroll from "./dark-scroll.svg";
 import darkstory from "./story-dark.png";
 import lightstory from "./story-light.png";
+import video from "./video-1.mp4";
 
 export {
   closedEye,
@@ -26,4 +27,5 @@ export {
   lighttagged,
   darkstory,
   lightstory,
+  video,
 };
